@@ -61,7 +61,7 @@ if(kijelolve == true){
 
 }
 
-void Box::getXY(int xX, int yY){
+void Box::getXY(int xX, int yY) {
 _XX = xX;
 _YY = yY;
 
@@ -87,7 +87,7 @@ ey = mousey;
 
 
 bool Box :: benne(){
-    if(!(ex  >= _x && ey >= _y && ex<=(_x+_sx) && ey <= (_y + _sy)) && (ex  >= _x-ablakszele/2 && ey >= _y-ablakszele/2 && ex<=(_x+_sx+ablakszele) && ey <= (_y + _sy+ablakszele))){
+    if(!(ex  >= _x && ey >= _y && ex<=(_x+_sx) && ey <= (_y + _sy)) && (ex  >= _x-ablakszele/2 && ey >= _y-ablakszele/2 && ex<=(_x+_sx+ablakszele/2) && ey <= (_y + _sy+ablakszele/2))){
         //cout << "rajta" <<endl;
         return true;
        }

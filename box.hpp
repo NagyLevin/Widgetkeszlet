@@ -1,17 +1,17 @@
-#ifndef BOXX_HPP
-#define BOXX_HPP
+#ifndef BOX_HPP
+#define BOX_HPP
 
 #include "graphics.hpp"
 using namespace genv;
 
 
-struct Box{
-private:
+class Box{
+protected:
 int _x;
 int _y;
 int _sx;
 int _sy;
-int ablakszele = 20;
+int ablakszele = 40;
 int fx,fy;
 int ex,ey;
 
@@ -45,11 +45,11 @@ virtual void elenged();
 
 public:
 
-Box(int _x, int _y, int _sx, int _sy , char _r, char _g , char _b);
+Box(int x, int y, int sx, int sy , char r, char g , char b);
 
 virtual void rajz();
 virtual void eventloop(event ev);
-virtual void getXY(int xX,int yY);
+virtual void getXY(int xX,int yY) ;
 virtual void getMousePos(int mousex,int mousey);
 virtual void mozog();
 
