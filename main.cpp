@@ -21,8 +21,8 @@ int main()
 
     vector<Box *> w;
 
-    Box *pb = new Box(100,100,20,20,255,0,0);
-    Box *pb2 = new Box(150,150,20,20,0,255,0);
+    Box *pb = new Box(100,100,120,120,255,0,0);
+    Box *pb2 = new Box(150,150,120,120,0,255,0);
 
 
 
@@ -38,18 +38,43 @@ int main()
     gin.timer(30);
 
     while(gin >> ev && ev.keycode != key_escape){
+    if(ev.type == ev_timer || ev.type == ev_mouse){
 
 
-    for(Box * pb : w){ //Playa, azza also resz kirajzol
+
+        for(Box * pb : w){ //Playa, azza also resz kirajzol
         if(pb){
+        pb->getXY(XX,YY);
         pb->rajz();
+        pb->mozog();
+
+
         }
 
+    }
+    if( ev.type == ev_mouse) {
+        for(Box * pb : w){ //Playa, azza also resz kirajzol
+        if(pb){
+
+
+        pb->eventloop(ev);
+        pb->getMousePos(ev.pos_x,ev.pos_y);
+        }
+        }
     }
 
 
 
-    gout << refresh;
+     gout << refresh;
+     gout << move_to(0,0) << color(0,0,0) << box(XX,YY) << color(255,255,255);
+    }
+
+
+
+
+
+
+
     }
     return 0;
 }
