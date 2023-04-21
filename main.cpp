@@ -23,11 +23,12 @@ int main()
 
     Box *pb = new Box(100,100,120,120,255,0,0);
     Box *pb2 = new Box(150,150,120,120,0,255,0);
-
+    TextBox *ptb = new TextBox(200,200,120,120,0,0,255,"tesztszoveg 0101");
 
 
     w.push_back(pb);
     w.push_back(pb2);
+    w.push_back(ptb);
 
 
     event ev;
