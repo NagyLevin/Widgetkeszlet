@@ -86,7 +86,7 @@ ey = mousey;
 
 
 
-bool Box :: benne(){
+bool Box :: benne(){ //külseje
     if(!(ex  >= _x && ey >= _y && ex<=(_x+_sx) && ey <= (_y + _sy)) && (ex  >= _x-ablakszele/2 && ey >= _y-ablakszele/2 && ex<=(_x+_sx+ablakszele/2) && ey <= (_y + _sy+ablakszele/2))){
         //cout << "rajta" <<endl;
         return true;
@@ -142,4 +142,10 @@ if(fogva){
         //if(_y+_sy >= _YY) _y=_YY-1-_sy;
 }
 }
+
+bool Box::kivalasztva() //belseje
+{
+    return ex>_x && ex<_x+_x && ey>_y && ey<_y+_sy;
+}
+
 

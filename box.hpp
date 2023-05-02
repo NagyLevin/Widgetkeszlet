@@ -30,7 +30,6 @@ char _r,_g,_b;
 virtual void kijelol();
 
 
-virtual bool benne();
 
 virtual void megfog();
 
@@ -52,7 +51,9 @@ virtual void eventloop(event ev);
 virtual void getXY(int xX,int yY) ;
 virtual void getMousePos(int mousex,int mousey);
 virtual void mozog();
+virtual bool kivalasztva();
 
+virtual bool benne();
 
 };
 
