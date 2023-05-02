@@ -15,33 +15,48 @@ void Textedit::rajz()
 {
     gout << move_to(_x, _y) << color(255,255,255) << box(_sx, _sy);
 
+
+
     if(_irhato && _szoveg.size()*10 <= _sx){
-       gout << move_to(_x, _y+_sy/2) << color(255,0,0) << text(_szoveg+"|");
-        //cout << "bent111"<<endl;
+       gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
+     gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg+"|");
     }
     if(_irhato && _szoveg.size()*10 > _sx){
         string save = _szoveg.substr(_szoveg.size() - _sx/10 , _szoveg.size());
 
-        gout << move_to(_x, _y+_sy/2) << color(255,0,0) << text(save+"|");
-        //cout << "bent"<<endl;
+       gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
+     gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save + "|");
     }
-    if(!_irhato){
 
-        if(!_irhato && _szoveg.size()*10 <= _sx){
-             gout << move_to(_x, _y+_sy/2) << color(255,0,0) << text(_szoveg);
+
+
+    if(!_irhato && _szoveg.size()*10 <= _sx){
+            gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
+            gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+            gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
 
 
         }
-        if(!_irhato && _szoveg.size()*10 > _sx){
+    if(!_irhato && _szoveg.size()*10 > _sx){
         string save = _szoveg.substr(_szoveg.size() - _sx/10 , _szoveg.size());
 
-        gout << move_to(_x, _y+_sy/2) << color(255,0,0) << text(save);
-        //cout << "bent"<<endl;
-    }
+        gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
+        gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+        gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
+        }
 
 
 
-    }
+
+
+
+
+
+
+
+
 
 
 }
@@ -99,6 +114,22 @@ void Textedit::eventloop(event ev)
 
 
     }
+
+
+//mozgatas
+if(ev.button == 1 && benne()) {
+
+kijelol();
+megfog();
+//cout <<"talalt"<<endl;
+}
+
+if(ev.button == -1 || !benne()) {
+    elenged();
+    kijelolvege();
+}
+//mozgatas
+
 
 }
 

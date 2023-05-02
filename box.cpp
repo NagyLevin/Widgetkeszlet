@@ -145,7 +145,7 @@ if(fogva){
 
 bool Box::kivalasztva() //belseje
 {
-    return ex>_x && ex<_x+_x && ey>_y && ey<_y+_sy;
+    return ex>_x && ex<_x+_sx && ey>_y && ey<_y+_sy;
 }
 
 

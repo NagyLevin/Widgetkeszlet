@@ -18,17 +18,42 @@ void TextBox :: rajz(){
 
 
 
-if(kijelolve == false){
-    //gout << move_to(_x,_y) << color(127+127*kijelolve,127+127*kijelolve,127+127*kijelolve) << box(_sx,_sy) << color(0,0,128) << move_to(_x+ablakszele,_y+ablakszele) << box(_sx+ablakszele/2,_sy+ablakszele/2);
-
-    gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
-    gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
-    gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
-}
 if(kijelolve == true){
-     gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
+
+      if(_szoveg.size()*10 <= _sx){
+       gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
      gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
      gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
+    }
+    if(_szoveg.size()*10 > _sx){
+        string save = _szoveg.substr(_szoveg.size() - _sx/10 , _szoveg.size());
+
+       gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
+     gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
+    }
+
+
+}
+if(kijelolve == false){
+
+     if(_szoveg.size()*10 <= _sx){
+            gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
+            gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+            gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
+
+
+        }
+        if(_szoveg.size()*10 > _sx){
+        string save = _szoveg.substr(_szoveg.size() - _sx/10 , _szoveg.size());
+
+        gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
+        gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+        gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
+        }
+
+
+
     }
 
     //gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
