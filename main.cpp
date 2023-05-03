@@ -5,7 +5,7 @@
 #include "textbox.hpp"
 #include "box.hpp"
 #include "textedit.hpp"
-
+#include "checkbox.hpp"
 
 using namespace genv;
 using namespace std;
@@ -26,6 +26,9 @@ int main()
     TextBox *ptb = new TextBox(400,100,120,120,0,0,255,"tesz12");
     Textedit *pte = new Textedit(550,100,120,120,0,0,255,"tesztszoveg");
     Textedit *pte2 = new Textedit(700,100,120,120,30,30,115,"tesztszoveg2");
+    CheckBox *pcb = new CheckBox(100,300,50,50,100,100,100);
+    CheckBox *pcb2 = new CheckBox(200,300,50,50,100,200,100);
+
 
 
     w.push_back(pb);
@@ -33,7 +36,8 @@ int main()
     w.push_back(ptb);
     w.push_back(pte);
     w.push_back(pte2);
-
+    w.push_back(pcb);
+    w.push_back(pcb2);
 
     event ev;
 
@@ -82,9 +86,6 @@ int main()
 
     }
     //cout << focus <<endl;
-
-
-
         if (focus!=-1) {
            w[focus]->eventloop(ev);
         }
