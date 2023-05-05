@@ -6,6 +6,7 @@
 #include "box.hpp"
 #include "textedit.hpp"
 #include "checkbox.hpp"
+#include "lista.hpp"
 
 using namespace genv;
 using namespace std;
@@ -30,6 +31,9 @@ int main()
     CheckBox *pcb2 = new CheckBox(200,300,50,50,100,200,100);
 
 
+    vector<string> gyumolcsok = {"alma","banan","korte", "narancs"};
+    Lista *pl = new Lista(400,300,150,50,100,200,100,gyumolcsok);
+
 
     w.push_back(pb);
     w.push_back(pb2);
@@ -38,6 +42,7 @@ int main()
     w.push_back(pte2);
     w.push_back(pcb);
     w.push_back(pcb2);
+    w.push_back(pl);
 
     event ev;
 
