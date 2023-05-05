@@ -13,7 +13,7 @@ protected:
 vector<string> _elemek;
 bool lenyitva;
 int elemszam;
-
+int kijeloltelem;
 
 
 public:
@@ -23,7 +23,7 @@ Lista(int x, int y, int sx, int sy , char r, char g , char b, vector<string> ele
 virtual void rajz() override;
 virtual void eventloop(event ev) override;
 
-
+virtual int listaelem();
 
 };
 

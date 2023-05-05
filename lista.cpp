@@ -8,9 +8,10 @@ using namespace std;
 Lista:: Lista(int x, int y, int sx, int sy ,char r, char g , char b,vector<string> elemek) : Box(x,y, sx, sy ,r,g , b) ,_elemek(elemek) { //csak egyszer fut le ertekadasok
 
 lenyitva = true;
+kijeloltelem = -1;
 
 if( 3 > _elemek.size()){
-elemszam = _elemek.size();
+elemszam = _elemek.size()-1;
 
 }
 else{
@@ -21,13 +22,56 @@ elemszam = 3;
 
 }
 
+
+int Lista::listaelem(){
+if(lenyitva){
+
+    for(int i = 0; i < elemszam+1; i++){
+    ex>_x && ex<_x+_sx && ey>_y+_sy*i && ey<_y+_sy+_sy*i;
+    cout << "siker" <<endl;
+    return i;
+    }
+    return -1;
+}
+
+
+}
+
+
 void Lista::eventloop(event ev){
 
 
 if (ev.type == ev_mouse && kivalasztva() && ev.button==btn_left) {
         lenyitva = !lenyitva;
-        //cout << "help" <<endl;
-    }
+
+}
+if (ev.type == ev_mouse && !kivalasztva() && ev.button==btn_left) {
+        lenyitva = false;
+
+}
+
+if (ev.type == ev_mouse && listaelem() != -1 && ev.button==btn_left) {
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

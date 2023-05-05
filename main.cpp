@@ -34,6 +34,8 @@ int main()
     vector<string> gyumolcsok = {"alma","banan","korte", "narancs"};
     Lista *pl = new Lista(400,300,150,50,100,200,100,gyumolcsok);
 
+    vector<string> allatok = {"medve","roka"};
+    Lista *pl2 = new Lista(600,300,150,50,50,200,100,allatok);
 
     w.push_back(pb);
     w.push_back(pb2);
@@ -43,6 +45,8 @@ int main()
     w.push_back(pcb);
     w.push_back(pcb2);
     w.push_back(pl);
+    w.push_back(pl2);
+
 
     event ev;
 
