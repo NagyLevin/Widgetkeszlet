@@ -5,7 +5,7 @@
 using namespace genv;
 using namespace std;
 
-Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam) : Box(x,y, sx, sy ,r,g , b), _szam(szam) { //csak egyszer fut le ertekadasok
+Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam, int minimum, int maximum) : Box(x,y, sx, sy ,r,g , b), _szam(szam),_minimum(minimum),_maximum(maximum) { //csak egyszer fut le ertekadasok
 
 
 
@@ -16,10 +16,15 @@ Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam
 void Number::eventloop(event ev){
 
 
+if (ev.type == ev_mouse &&  ev.button==btn_left && kivalasztva() && ev.type == ev_key && ev.keycode == key_capsl) { //allitas 10x ertekkel
+    plusz(10);
+    minusz(10);
 
-if (ev.type == ev_mouse &&  ev.button==btn_left && kivalasztva()) {
-    plusz();
-    minusz();
+
+}
+if (ev.type == ev_mouse &&  ev.button==btn_left && kivalasztva()) { //allitas kattintassal
+    plusz(1);
+    minusz(1);
 
 
 }
@@ -27,6 +32,27 @@ if (ev.type == ev_mouse &&  ev.button==btn_left && kivalasztva()) {
 
 
 
+if (ev.type == ev_mouse && ev.button==btn_wheelup && kivalasztva()) { //allitas gorgovel
+    _szam = _szam+1;
+
+
+}
+if (ev.type == ev_mouse && ev.button==btn_wheeldown && kivalasztva()) { //allitas gorgovel
+    _szam = _szam-1;
+
+
+}
+
+
+if(_szam > _maximum){
+    _szam = _maximum;
+
+}
+
+if(_minimum > _szam){
+    _szam = _minimum;
+
+}
 
 
 
@@ -60,19 +86,19 @@ if(ev.button == -1 || !benne()) {
 }
 
 
-void Number::plusz(){
+void Number::plusz(int mennyi){
 if(ex>_x && ex<_x+_sx && ey>_y && ey<_y+_sy/5){
-    _szam = _szam +1;
+    _szam = _szam +mennyi;
 
 }
 
 
 }
 
-void Number::minusz(){
+void Number::minusz(int mennyi){
 
 if(ex>_x && ex<_x+_sx && ey>_y+_sy -_sy/5 && ey<_y+_sy){
-     _szam = _szam -1;
+     _szam = _szam -mennyi;
 
 }
 

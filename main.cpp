@@ -7,6 +7,8 @@
 #include "textedit.hpp"
 #include "checkbox.hpp"
 #include "lista.hpp"
+#include "number.hpp"
+
 
 using namespace genv;
 using namespace std;
@@ -37,6 +39,12 @@ int main()
     vector<string> allatok = {"medve","roka"};
     Lista *pl2 = new Lista(600,300,150,50,50,200,100,allatok);
 
+
+    Number *pn = new Number(100,400,120,120,0,0,255,97,0,100);
+    Number *pn2 = new Number(300,400,120,120,20,40,80,5,-10,10);
+
+
+
     w.push_back(pb);
     w.push_back(pb2);
     w.push_back(ptb);
@@ -46,7 +54,8 @@ int main()
     w.push_back(pcb2);
     w.push_back(pl);
     w.push_back(pl2);
-
+    w.push_back(pn);
+    w.push_back(pn2);
 
     event ev;
 
