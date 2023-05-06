@@ -17,6 +17,11 @@ public:
 Number(int x, int y, int sx, int sy , char r, char g , char b , int szam);
 
 virtual void rajz() override;
+virtual void eventloop(event ev) override;
+
+virtual void plusz();
+virtual void minusz();
+
 
 };
 
