@@ -7,7 +7,7 @@ using namespace std;
 
 Lista:: Lista(int x, int y, int sx, int sy ,char r, char g , char b,vector<string> elemek) : Box(x,y, sx, sy ,r,g , b) ,_elemek(elemek) { //csak egyszer fut le ertekadasok
 
-lenyitva = true;
+lenyitva = false;
 kijeloltelem = -1;
 
 if( 3 > _elemek.size()){
@@ -26,11 +26,25 @@ elemszam = 3;
 int Lista::listaelem(){
 if(lenyitva){
 
-    for(int i = 0; i < elemszam+1; i++){
-    ex>_x && ex<_x+_sx && ey>_y+_sy*i && ey<_y+_sy+_sy*i;
-    cout << "siker" <<endl;
-    return i;
+    for(int i = 1; i < elemszam+1; i++){
+    //gout << move_to(_x,_y) << color(200,0,0) << box(_x+_sx,_y+_sy +_sy*i);
+
+    //cout << "Y " << _y+_sy*i <<endl;
+    //cout << "ey " << ey <<endl;
+    if(ex>_x && ex<_x+_sx && ey >_y+_sy*i && ey < _y+_sy +_sy*i){
+        //cout << "siker " << i<<endl;
+
+
+        return i;
+
     }
+
+    }
+
+
+
+
+
     return -1;
 }
 
@@ -45,15 +59,27 @@ if (ev.type == ev_mouse && kivalasztva() && ev.button==btn_left) {
         lenyitva = !lenyitva;
 
 }
+/*
 if (ev.type == ev_mouse && !kivalasztva() && ev.button==btn_left) {
         lenyitva = false;
 
 }
+*/
+if (ev.type == ev_mouse &&  ev.button==btn_left && !kivalasztva()) {
 
-if (ev.type == ev_mouse && listaelem() != -1 && ev.button==btn_left) {
+
+if(listaelem() != -1)
+{
+int csere = listaelem();
+string bere;
+bere = _elemek[0];
+_elemek[0] = _elemek[csere];
+_elemek[csere] = bere;
 
 
+}
 
+ lenyitva = false;
 }
 
 
