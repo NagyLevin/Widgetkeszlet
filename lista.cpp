@@ -10,17 +10,30 @@ Lista:: Lista(int x, int y, int sx, int sy ,char r, char g , char b,vector<strin
 lenyitva = false;
 kijeloltelem = -1;
 
-if( 3 > _elemek.size()){
+if(kirajzoltelemek > _elemek.size()){
 elemszam = _elemek.size()-1;
 
 }
 else{
-elemszam = 3;
+elemszam = _elemek.size()-1;
 
 }
 
 
 }
+
+string Lista::adjelemet(){
+return _elemek[0];
+}
+
+
+void Lista::hozzaadelem(string elem){
+_elemek.push_back(elem);
+
+elemszam = elemszam+1;
+
+}
+
 
 
 int Lista::listaelem(){
@@ -143,6 +156,7 @@ if(lenyitva == false){
      gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
     }
 }
+
 if(lenyitva == true){
 
 
@@ -150,8 +164,29 @@ if(lenyitva == true){
         gout << move_to(_x,_y+i*_sy) << color(_r,_g,_b) <<box(_sx,_sy);
         gout << move_to(_x,_y+i*_sy) << color(_r-100,_g-100,_b-100) <<box(_sx,1);
 
+    if(i > 0 && _y+(i+2)*_sy > _YY){ //ne logjon ki a lista az ablakbol //work in progress
+        if(i > 0){
+                gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text("...");
 
-        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[i]);
+        }
+        break;
+    }
+    else{
+
+    if(_elemek[i].size()*10 <= _sx){
+
+    gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[i]);
+
+    }
+    if(_elemek[i].size()*10 > _sx){
+        string save = _elemek[i].substr(_elemek[i].size() - _sx/10 , _elemek[i].size());
+
+        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(save);
+
+    }
+
+
+    }
 
     }
 

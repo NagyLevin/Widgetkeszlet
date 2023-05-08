@@ -11,6 +11,12 @@ Textedit::Textedit(int x, int y, int sx, int sy ,char r, char g , char b, string
 _irhato = false;
 }
 
+
+string Textedit::giveText(){
+return _szoveg;
+}
+
+
 void Textedit::rajz()
 {
     gout << move_to(_x, _y) << color(255,255,255) << box(_sx, _sy);

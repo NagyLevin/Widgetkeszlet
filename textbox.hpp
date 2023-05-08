@@ -17,6 +17,8 @@ public:
 TextBox(int x, int y, int sx, int sy , char r, char g , char b , string szoveg);
 
 virtual void rajz() override;
+virtual void setText( string text);
+
 
 };
 

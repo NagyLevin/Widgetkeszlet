@@ -15,6 +15,8 @@ public:
     Textedit(int x, int y, int sx, int sy ,char r, char g , char b, string szoveg);
     virtual void rajz() override;
     virtual void eventloop(genv::event ev) override;
+    virtual string giveText();
+
 
 };
 

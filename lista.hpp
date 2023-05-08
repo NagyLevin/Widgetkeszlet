@@ -14,6 +14,7 @@ vector<string> _elemek;
 bool lenyitva;
 int elemszam;
 int kijeloltelem;
+int kirajzoltelemek =3;
 
 
 public:
@@ -24,6 +25,10 @@ virtual void rajz() override;
 virtual void eventloop(event ev) override;
 
 virtual int listaelem();
+
+virtual string adjelemet();
+
+virtual void hozzaadelem(string elem);
 
 };
 

@@ -56,12 +56,14 @@ if(kijelolve == false){
 
     }
 
-    //gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(255,255,255) <<box(_sx+ablakszele,_sy+ablakszele);
-    //gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
-
 
 
 }
 
+void TextBox::setText(string text){
 
+_szoveg = text;
+
+
+}
 

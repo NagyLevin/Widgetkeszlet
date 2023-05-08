@@ -38,6 +38,7 @@ virtual void kijelolvege();
 virtual void elenged();
 
 
+//esemenyt csinalhatsz, amit a gomb megnyomasaval erhetsz el pl ping/show
 
 //box mozgatas es atmeretezes
 
