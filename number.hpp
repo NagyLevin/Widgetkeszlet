@@ -24,7 +24,7 @@ virtual void eventloop(event ev) override;
 
 virtual void plusz(int mennyi);
 virtual void minusz(int mennyi);
-
+int adjszamot();
 
 };
 

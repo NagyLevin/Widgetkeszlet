@@ -26,6 +26,13 @@ string Lista::adjelemet(){
 return _elemek[0];
 }
 
+void Lista::torolelem(){
+
+if(_elemek.size() > 0){
+return _elemek.pop_back();
+}
+
+}
 
 void Lista::hozzaadelem(string elem){
 _elemek.push_back(elem);

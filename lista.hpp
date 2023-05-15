@@ -30,6 +30,7 @@ virtual string adjelemet();
 
 virtual void hozzaadelem(string elem);
 
+virtual void torolelem();
 };
 
 

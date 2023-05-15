@@ -37,7 +37,7 @@ if(kijelolve == true){
 }
 if(kijelolve == false){
 
-     if(_szoveg.size()*10 <= _sx){
+        if(_szoveg.size()*10 <= _sx){
             gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
             gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
             gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);

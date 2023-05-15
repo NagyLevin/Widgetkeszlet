@@ -12,6 +12,11 @@ Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam
 
 }
 
+int Number::adjszamot(){
+return _szam;
+
+}
+
 
 void Number::eventloop(event ev){
 
