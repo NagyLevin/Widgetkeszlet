@@ -14,17 +14,20 @@ protected:
 int _szam;
 int _maximum;
 int _minimum;
+int _korbeforog;
 
 public:
 
-Number(int x, int y, int sx, int sy , char r, char g , char b , int szam, int minimum, int maximum);
+Number(int x, int y, int sx, int sy , char r, char g , char b , int szam, int minimum, int maximum,int korbeforog);
 
 virtual void rajz() override;
 virtual void eventloop(event ev) override;
 
 virtual void plusz(int mennyi);
 virtual void minusz(int mennyi);
+
 int adjszamot();
+
 
 };
 

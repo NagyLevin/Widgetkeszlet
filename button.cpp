@@ -46,13 +46,13 @@ if(kijelolve == true){
 if(_szoveg.size()*10 <= _sx){
 
 gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
-gout << move_to(_x+ _sx/2,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
+gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_szoveg);
 }
 if(_szoveg.size()*10 > _sx){
 string save = _szoveg.substr(_szoveg.size() - _sx/10 , _szoveg.size());
 ;
 gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
-gout << move_to(_x + _sx/2,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
+gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
 }
 
 if(megynyom){

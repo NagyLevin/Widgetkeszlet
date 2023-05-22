@@ -27,8 +27,11 @@ virtual void eventloop(event ev) override;
 virtual int listaelem();
 
 virtual string adjelemet();
-
 virtual void hozzaadelem(string elem);
+
+virtual vector<string> adjlistat();
+virtual void listacsere(vector<string> lista);
+
 
 virtual void torolelem();
 };

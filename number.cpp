@@ -5,7 +5,7 @@
 using namespace genv;
 using namespace std;
 
-Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam, int minimum, int maximum) : Box(x,y, sx, sy ,r,g , b), _szam(szam),_minimum(minimum),_maximum(maximum) { //csak egyszer fut le ertekadasok
+Number :: Number(int x, int y, int sx, int sy ,char r, char g , char b, int szam, int minimum, int maximum,int korbeforog) : Box(x,y, sx, sy ,r,g , b), _szam(szam),_minimum(minimum),_maximum(maximum),_korbeforog(korbeforog) { //csak egyszer fut le ertekadasok
 
 
 
@@ -49,20 +49,34 @@ if (ev.type == ev_mouse && ev.button==btn_wheeldown && kivalasztva()) { //allita
 }
 
 
-if(_szam > _maximum){
+if(_korbeforog == 0 && _szam > _maximum){
     _szam = _maximum;
 
 }
 
-if(_minimum > _szam){
+if(_korbeforog == 0 && _minimum > _szam){
     _szam = _minimum;
 
 }
 
+if(_korbeforog == 1 && _szam > _maximum){
+    _szam = _minimum;
 
+}
 
+if(_korbeforog == 1 && _minimum > _szam){
+    _szam = _maximum;
 
+}
 
+if(_korbeforog == 3 && _szam > _maximum){
+    _szam = _maximum;
+
+}
+if(_korbeforog == -3 && _minimum > _szam){
+    _szam = _minimum;
+
+}
 
 
 

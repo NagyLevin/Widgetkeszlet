@@ -2,6 +2,8 @@
 
 #include "graphics.hpp"
 #include <iostream>
+#include <vector>
+#include<bits/stdc++.h>
 using namespace genv;
 using namespace std;
 
@@ -22,6 +24,14 @@ elemszam = _elemek.size()-1;
 
 }
 
+void Lista::listacsere(vector<string> lista){
+_elemek = lista;
+
+}
+vector<string> Lista::adjlistat(){
+return _elemek;
+}
+
 string Lista::adjelemet(){
 return _elemek[0];
 }
@@ -32,12 +42,25 @@ if(_elemek.size() > 0){
 return _elemek.pop_back();
 }
 
+
+
+
 }
 
 void Lista::hozzaadelem(string elem){
+
+
 _elemek.push_back(elem);
 
 elemszam = elemszam+1;
+
+for(size_t i = 0; _elemek.size() > i;i++ )
+if(_elemek[i] == ""){
+
+    _elemek.erase(_elemek.begin()+i);
+    elemszam = elemszam-1;
+}
+
 
 }
 
