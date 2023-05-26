@@ -32,8 +32,13 @@ virtual void hozzaadelem(string elem);
 virtual vector<string> adjlistat();
 virtual void listacsere(vector<string> lista);
 
+virtual void elemcsere(string elem);
+
+virtual int melyikelem();
 
 virtual void torolelem();
+
+
 };
 
 

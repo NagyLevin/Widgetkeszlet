@@ -10,7 +10,7 @@ using namespace std;
 Lista:: Lista(int x, int y, int sx, int sy ,char r, char g , char b,vector<string> elemek) : Box(x,y, sx, sy ,r,g , b) ,_elemek(elemek) { //csak egyszer fut le ertekadasok
 
 lenyitva = false;
-kijeloltelem = -1;
+kijeloltelem = 0;
 
 if(kirajzoltelemek > _elemek.size()){
 elemszam = _elemek.size()-1;
@@ -24,23 +24,62 @@ elemszam = _elemek.size()-1;
 
 }
 
+void Lista::elemcsere(string elem){
+_elemek[kijeloltelem] = elem;
+}
+
+
+
+int Lista::melyikelem(){
+return kijeloltelem;
+}
+
 void Lista::listacsere(vector<string> lista){
 _elemek = lista;
-
+elemszam = lista.size()-1;
 }
 vector<string> Lista::adjlistat(){
 return _elemek;
 }
 
+
+
 string Lista::adjelemet(){
-return _elemek[0];
+return _elemek[kijeloltelem];
 }
 
 void Lista::torolelem(){
 
-if(_elemek.size() > 0){
-return _elemek.pop_back();
+/*
+if(_elemek.size() > 0 && elemszam > -1){
+_elemek.pop_back();
+elemszam = elemszam -1;
+//cout << "ez" <<endl;
 }
+if(_elemek.size() == 0){
+    _elemek[0] = "";
+   // cout << "az" <<endl;
+}
+*/
+
+
+if(_elemek.size() == 1){
+    _elemek[kijeloltelem] = "";
+    //cout << "az" <<endl;
+}
+
+if(_elemek.size()-1 > 0 && elemszam > 0){
+_elemek.erase(_elemek.begin()+kijeloltelem);
+elemszam = elemszam -1;
+kijeloltelem = 0;
+//cout << "ez" <<endl;
+}
+
+//cout << _elemek.size() <<endl;
+
+
+
+
 
 
 
@@ -108,16 +147,13 @@ if (ev.type == ev_mouse && !kivalasztva() && ev.button==btn_left) {
 
 }
 */
-if (ev.type == ev_mouse &&  ev.button==btn_left && !kivalasztva()) {
+if (ev.type == ev_mouse &&  ev.button==btn_left && !kivalasztva() && lenyitva) {
 
 
-if(listaelem() != -1)
-{
-int csere = listaelem();
-string bere;
-bere = _elemek[0];
-_elemek[0] = _elemek[csere];
-_elemek[csere] = bere;
+if(listaelem() != -1){
+
+kijeloltelem = listaelem();
+//cout << kijeloltelem <<endl;
 
 
 }
@@ -169,18 +205,20 @@ if(kijelolve){
     if(!kijelolve){
         gout << move_to(_x-ablakszele/2,_y-ablakszele/2) << color(127,127,172) <<box(_sx+ablakszele,_sy+ablakszele);
     }
+
+
 if(lenyitva == false){
     gout << move_to(_x, _y) << color(255,255,255) << box(_sx, _sy);
 
 
 
-    if(_elemek[0].size()*10 <= _sx){
+    if(_elemek[kijeloltelem].size()*10 <= _sx){
 
      gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
-     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_elemek[0]);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_elemek[kijeloltelem]);
     }
-    if(_elemek[0].size()*10 > _sx){
-        string save = _elemek[0].substr(_elemek[0].size() - _sx/10 , _elemek[0].size());
+    if(_elemek[kijeloltelem].size()*10 > _sx){
+        string save = _elemek[kijeloltelem].substr(_elemek[kijeloltelem].size() - _sx/10 , _elemek[kijeloltelem].size());
 
      gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
      gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
@@ -203,6 +241,9 @@ if(lenyitva == true){
     }
     else{
 
+
+
+
     if(_elemek[i].size()*10 <= _sx){
 
     gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[i]);
@@ -218,8 +259,9 @@ if(lenyitva == true){
 
     }
 
-    }
 
+    }
+//
 
 
 
