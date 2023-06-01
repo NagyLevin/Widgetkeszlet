@@ -40,12 +40,12 @@ int main()
     Lista *pl2 = new Lista(600,200,150,50,50,200,100,allatok);
 
 
-    Number *pn = new Number(100,300,120,120,0,0,255,97,0,100);
-    Number *pn2 = new Number(300,300,120,120,20,40,80,5,-10,10);
+    Number *pn = new Number(100,300,120,120,0,0,255,97,0,100,1); //1 korbeforog //2 nem forog korbr //-3 van minimum // 3 van maximum //barmi mas vegtelen
+    Number *pn2 = new Number(300,300,120,120,20,40,80,5,-10,10,-3);
 
-    Button *pbu = new Button(500,300,75,75,0,100,100);
-    Button *pbu2 = new Button(600,300,75,75,100,0,100);
-    Button *pbu3 = new Button(700,300,75,75,100,50,10);
+    Button *pbu = new Button(500,300,75,75,0,100,100,"gomb");
+    Button *pbu2 = new Button(600,300,75,75,100,0,100,"gomb");
+    Button *pbu3 = new Button(700,300,75,75,100,50,10,"gomb");
 
 
     w.push_back(pb);
