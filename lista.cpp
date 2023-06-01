@@ -37,6 +37,7 @@ return kijeloltelem;
 void Lista::listacsere(vector<string> lista){
 _elemek = lista;
 elemszam = lista.size()-1;
+kijeloltelem = 0;
 }
 vector<string> Lista::adjlistat(){
 return _elemek;
@@ -108,16 +109,20 @@ if(_elemek[i] == ""){
 int Lista::listaelem(){
 if(lenyitva){
 
-    for(int i = 1; i < elemszam+1; i++){
+    for(int i = 0; i < elemszam+1; i++){
     //gout << move_to(_x,_y) << color(200,0,0) << box(_x+_sx,_y+_sy +_sy*i);
 
     //cout << "Y " << _y+_sy*i <<endl;
     //cout << "ey " << ey <<endl;
     if(ex>_x && ex<_x+_sx && ey >_y+_sy*i && ey < _y+_sy +_sy*i){
         //cout << "siker " << i<<endl;
+        if(i == kijeloltelem){ // cserebere, hogy ujra ki lehessen valasztani a 0. elemet
+            return 0;
+        }
+        else{
+            return i;
+        }
 
-
-        return i;
 
     }
 
@@ -139,6 +144,8 @@ void Lista::eventloop(event ev){
 
 if (ev.type == ev_mouse && kivalasztva() && ev.button==btn_left) {
         lenyitva = !lenyitva;
+
+
 
 }
 /*
@@ -225,6 +232,9 @@ if(lenyitva == false){
     }
 }
 
+if(kijeloltelem == 0){
+
+
 if(lenyitva == true){
 
 
@@ -246,7 +256,10 @@ if(lenyitva == true){
 
     if(_elemek[i].size()*10 <= _sx){
 
+
     gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[i]);
+
+
 
     }
     if(_elemek[i].size()*10 > _sx){
@@ -264,9 +277,114 @@ if(lenyitva == true){
 //
 
 
+}
+}
+
+
+
+if(kijeloltelem != 0){ //cserebere azert hogy jol mutassa a kijeloltelemet
+
+
+if(lenyitva == true){
+
+    gout << move_to(_x, _y) << color(255,255,255) << box(_sx, _sy);
+
+
+
+    if(_elemek[kijeloltelem].size()*10 <= _sx){
+
+     gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(_elemek[kijeloltelem]);
+    }
+    if(_elemek[kijeloltelem].size()*10 > _sx){
+        string save = _elemek[kijeloltelem].substr(_elemek[kijeloltelem].size() - _sx/10 , _elemek[kijeloltelem].size());
+
+     gout << move_to(_x,_y) << color(_r,_g,_b) <<box(_sx,_sy);
+     gout << move_to(_x,_y +_sy/2) << color(_r-100,_g-100,_b-100) << text(save);
+    }
+
+
+
+    for(int i = 1; i < elemszam+1; i++){
+        gout << move_to(_x,_y+i*_sy) << color(_r,_g,_b) <<box(_sx,_sy);
+        gout << move_to(_x,_y+i*_sy) << color(_r-100,_g-100,_b-100) <<box(_sx,1);
+
+    if(i > 0 && _y+(i+2)*_sy > _YY){ //ne logjon ki a lista az ablakbol //work in progress
+        if(i > 0){
+                gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text("...");
+
+        }
+        break;
+    }
+    else{
+
+
+
+
+    if(_elemek[i].size()*10 <= _sx){
+
+    if(kijeloltelem == i){
+        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[0]);
+
+
+    }
+    else{
+        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(_elemek[i]);
+
+    }
+
+    }
+    if(_elemek[i].size()*10 > _sx){
+
+        if(kijeloltelem == i){
+        string save = _elemek[i].substr(_elemek[0].size() - _sx/10 , _elemek[0].size());
+
+        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(save);
+        }
+        else{
+        string save = _elemek[i].substr(_elemek[i].size() - _sx/10 , _elemek[i].size());
+
+        gout << move_to(_x,_y +_sy/2 +i*_sy) << color(_r-100,_g-100,_b-100) << text(save);
+        }
+
+    }
+
+
+    }
+
+
+    }
+//
 
 
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
