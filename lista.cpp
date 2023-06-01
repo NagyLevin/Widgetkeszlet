@@ -64,17 +64,20 @@ if(_elemek.size() == 0){
 */
 
 
-if(_elemek.size() == 1){
+if(_elemek.size()-1 == 0 && elemszam == 0){
     _elemek[kijeloltelem] = "";
     //cout << "az" <<endl;
 }
+//cout << _elemek.size()-1 << " es " <<elemszam <<endl;
 
-if(_elemek.size()-1 > 0 && elemszam > 0){
+if(_elemek.size()-1 > 0){
 _elemek.erase(_elemek.begin()+kijeloltelem);
 elemszam = elemszam -1;
 kijeloltelem = 0;
 //cout << "ez" <<endl;
 }
+
+
 
 //cout << _elemek.size() <<endl;
 
@@ -120,6 +123,7 @@ if(lenyitva){
             return 0;
         }
         else{
+               // cout << i <<endl;
             return i;
         }
 
